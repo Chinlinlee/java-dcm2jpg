@@ -1,0 +1,36 @@
+# Java/Maven specific
+target/
+*.iml
+*.iws
+*.ipr
+.idea/
+mvnw
+mvnw.cmd
+
+# Logs
+*.log
+log/
+log4j.properties
+
+# Build files
+build/
+bin/
+
+# Testing
+test-output/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Netbeans
+nbproject/
+nbactions.xml
+nb-configuration.xml
