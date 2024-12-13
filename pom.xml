@@ -6,11 +6,10 @@
 
     <groupId>org.github.chinlinlee</groupId>
     <artifactId>dcm2jpg</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1</version>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <dcm4che.version>5.32.0</dcm4che.version>
     </properties>
 
     <repositories>
@@ -20,4 +19,55 @@
             <url>https://www.dcm4che.org/maven2</url>
         </repository>
     </repositories>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.dcm4che/dcm4che-core -->
+        <dependency>
+            <groupId>org.dcm4che</groupId>
+            <artifactId>dcm4che-core</artifactId>
+            <version>${dcm4che.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.dcm4che</groupId>
+            <artifactId>dcm4che-image</artifactId>
+            <version>${dcm4che.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.dcm4che</groupId>
+            <artifactId>dcm4che-imageio</artifactId>
+            <version>${dcm4che.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.dcm4che</groupId>
+            <artifactId>dcm4che-imageio-rle</artifactId>
+            <version>${dcm4che.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.dcm4che</groupId>
+            <artifactId>dcm4che-imageio-opencv</artifactId>
+            <version>${dcm4che.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.media</groupId>
+            <artifactId>jai_imageio</artifactId>
+            <version>1.2-pre-dr-b04</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.dcm4che.tool</groupId>
+            <artifactId>dcm4che-tool-common</artifactId>
+            <version>${dcm4che.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.dcm4che.tool/dcm4che-tool-dcm2jpg -->
+        <dependency>
+            <groupId>org.dcm4che.tool</groupId>
+            <artifactId>dcm4che-tool-dcm2jpg</artifactId>
+            <version>${dcm4che.version}</version>
+        </dependency>
+
+    </dependencies>
 </project>

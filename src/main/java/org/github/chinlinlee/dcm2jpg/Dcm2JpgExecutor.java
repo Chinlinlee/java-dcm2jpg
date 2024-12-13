@@ -17,14 +17,17 @@ public class Dcm2JpgExecutor {
         public int windowCenter=Integer.MAX_VALUE;
         public int windowWidth=Integer.MAX_VALUE;
         public String format = "JPEG";
+        public String writerClass = "com.sun.imageio.plugins.*";
+        public String compressionType = null;
     }
 
     public static ConvertStatus convertDcmToJpgFromFilename(String dcmFilename, String jpgFilename, Dcm2JpgOptions dcm2JpgOptions) {
         ConvertStatus status = new ConvertStatus();
         try {
             Dcm2Jpg dcm2Jpg = new Dcm2Jpg();
-            dcm2Jpg.initImageWriter(dcm2JpgOptions.format, null, "com.sun.imageio.plugins.*", null, dcm2JpgOptions.jpgQuality);
-            dcm2Jpg.setReadImage(dcm2Jpg::readImageFromDicomInputStream);
+
+            dcm2Jpg.initImageWriter(dcm2JpgOptions.format, null, dcm2JpgOptions.writerClass, dcm2JpgOptions.compressionType, dcm2JpgOptions.jpgQuality);
+            dcm2Jpg.setReadImage(dcm2Jpg::readImageFromImageInputStream);
 
             // Set window level
             if (dcm2JpgOptions.windowCenter!=Integer.MAX_VALUE && dcm2JpgOptions.windowWidth!=Integer.MAX_VALUE) {
@@ -46,18 +49,6 @@ public class Dcm2JpgExecutor {
             status.status = false;
             status.message = "Failure: " + e.toString();
             return status;
-        }
-    }
-
-    static final String dcmPath = "L:\\sampleDicom\\siim-arc-pneumothorax\\1lSM4E.dcm";
-    static final String jpgPath = "L:\\sampleDicom\\siim-arc-pneumothorax\\1lSM4E.jpg";
-    public static void main(String[] args) throws Exception {
-        try {
-            ConvertStatus status = convertDcmToJpgFromFilename(dcmPath, jpgPath, new Dcm2JpgOptions());
-            System.out.println(status.message);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-            throw new Exception("dcm2jpg to JPG failure!");
         }
     }
 }
